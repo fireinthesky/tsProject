@@ -9,7 +9,12 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     cssnano = require('gulp-cssnano'),
     sourcemaps = require('gulp-sourcemaps'),
-    package = require('./package.json');
+    package = require('./package.json'),
+    ts=require('gulp-typescript'),
+    tsProject = ts.createProject("tsconfig.json");
+    var plumber = require('gulp-plumber');
+
+
 
 
 var banner = [
@@ -54,6 +59,17 @@ gulp.task('js',function(){
     .pipe(browserSync.reload({stream:true, once: true}));
 });
 
+gulp.task("ts", function(){
+    return tsProject.src()
+    .pipe(plumber())
+    .pipe(tsProject())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest("app/assets/ts/"))
+    .pipe(browserSync.reload({stream:true, once: true}));
+})
+
+
+
 gulp.task('browser-sync', function() {
     browserSync.init(null, {
         server: {
@@ -65,8 +81,9 @@ gulp.task('bs-reload', function () {
     browserSync.reload();
 });
 
-gulp.task('default', ['css', 'js', 'browser-sync'], function () {
+gulp.task('default', ['css', 'js', 'ts', 'browser-sync'], function () {
     gulp.watch("src/scss/**/*.scss", ['css']);
     gulp.watch("src/js/*.js", ['js']);
+    gulp.watch("src/ts/**/*.ts", ['ts']);
     gulp.watch("app/*.html", ['bs-reload']);
 });

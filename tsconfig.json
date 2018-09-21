@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "declaration": true,
+        "lib": [
+            "es5",
+    "es2015",
+    "dom",
+    "scripthost"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
