@@ -22,7 +22,7 @@ export module Ajax {
                 data: options.data,
                 cache: false,
                 success: function (d) { 
-                    successCallback(d);
+                    successCallback(d); 
                 },
                 error: function (d) {
                     if (errorCallback) {
