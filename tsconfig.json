@@ -3,9 +3,8 @@
         "target": "es5",
         "module": "commonjs",
         "noEmitOnError": true,
-        "noImplicitAny": true,
-        "sourceMap": true,
-        "declaration": true,
+        "noImplicitAny": false,
+        
         "lib": [
             "es5",
     "es2015",
