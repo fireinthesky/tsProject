@@ -1,5 +1,3 @@
-
-
 export class UrlFactory{
     public static getUrl():string{
         let finalUrl:string;
