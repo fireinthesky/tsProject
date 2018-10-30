@@ -1,3 +1,3 @@
-export class Main{
+export class Main {
     
-}
+} 
